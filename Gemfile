@@ -17,6 +17,7 @@ gem 'filepicker-rails'
 gem 'formal'
 gem 'factory_girl_rails'
 gem 'twitter-bootstrap-rails'
+gem 'formal'
 
 group :development, :test do
   gem 'pry-rails'

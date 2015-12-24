@@ -1,0 +1,31 @@
+.right
+  .header
+    %h1 Sign Up
+  .row
+    .col-md-6
+      = form_for user do |f|
+        %fieldset
+          %dl
+            %dt= f.label :email
+            %dd= f.text_field :email, class: 'form-control'
+
+            %dt= f.label :password
+            %dd= f.password_field :password, class: 'form-control'
+
+            %dt= f.label :password_confirmation
+            %dd= f.password_field :password_confirmation, class: 'form-control'
+        %fieldset.actions
+          = f.submit 'Sign Up', class: 'btn btn-success'
+
+  %p Already have an account?
+  .row
+    .col-md-6
+      = form_tag sign_in_path, html: {class: 'form-horizontal'} do |f|
+        %fieldset.form-group
+          %dl
+            %dt= label_tag :email
+            %dd= text_field_tag :email, nil, class: 'form-control'
+            %dt= label_tag :password
+            %dd= password_field_tag :password, nil, class: 'form-control'
+        %fieldset.actions
+          = submit_tag "Sign in", class: 'btn btn-default'
