@@ -7,10 +7,13 @@ development:
   <<: *default
   database: homework_planner_development
 
-test:
+test: &test
   <<: *default
   database: homework_planner_test
 
 production:
   <<: *default
   database: homework_planner_production
+
+cucumber:
+  <<: *test
