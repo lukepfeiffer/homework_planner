@@ -1,0 +1,43 @@
+%p Seems like your not signed in or just curious, here is how the courses would look.
+%table.table
+  %thead
+    %tr
+      %th Course Name
+      %th Description
+      %th Schedule
+      %th Teacher Name
+      %th
+  %tbody
+    %tr
+      %td.col-md-1 Science
+      %td.col-md-5
+        = string
+        - if string.length >= 200
+          %button.btn.btn-default.btn-xs.show_text Read More
+      %td.col-md-3 Mon & Friday, 12:00pm - 2:00pm
+      %td.col-md-1 Mr. Washington
+      %td.col-md-2
+        %button.btn.btn-warning.btn-xs Edit Course
+        %button.btn.btn-danger.btn-xs Delete Course
+    %tr
+      %td Math
+      %td
+        = string
+        - if string.length >= 200
+          %button.btn.btn-default.btn-xs.show_text Read More
+      %td Tues & Wednesday, 9:00am - 11:00am
+      %td Mrs. Wood
+      %td
+        %button.btn.btn-warning.btn-xs Edit Course
+        %button.btn.btn-danger.btn-xs Delete Course
+    %tr
+      %td Literature
+      %td
+        = string
+        - if string.length >= 200
+          %button.btn.btn-default.btn-xs.show_text Read More
+      %td Thurs, 3:00pm - 4:00pm
+      %td Mr. Brown
+      %td
+        %button.btn.btn-warning.btn-xs Edit Course
+        %button.btn.btn-danger.btn-xs Delete Course
