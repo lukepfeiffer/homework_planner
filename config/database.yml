@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: homework_planner_development
+
+test:
+  <<: *default
+  database: homework_planner_test
+
+production:
+  <<: *default
+  database: homework_planner_production
