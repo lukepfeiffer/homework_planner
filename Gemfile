@@ -16,6 +16,10 @@ gem 'zurb-foundation'
 gem 'filepicker-rails'
 gem 'formal'
 
+group :assets do
+  gem 'twitter-bootstrap-rails'
+end
+
 group :development, :test do
   gem 'pry-rails'
   gem 'fabrication'
