@@ -1,5 +1,37 @@
-%h1.header Courses
+%h1.page-header Courses
 - if user_signed_in?
+  %button.btn.btn-primary.show_form Add Course
+  .hidden_form
+    = form_for course do |f|
+      %fieldset
+        = f.hidden_field :user_id, value: current_user.id
+        .form-group.col-md-12
+          %dl
+            .col-md-6
+              %dt= f.label :name
+              %dd= f.text_field :name, class: 'form-control'
+            .col-md-6
+              %dt= f.label :teacher_name
+              %dd= f.text_field :teacher_name, class: 'form-control'
+        .form-group.col-md-12
+          %dl
+            .col-md-4
+              %dt= f.label :start_time
+              %dd= f.time_select :start_time
+
+            .col-md-4
+              %dt= f.label :end_time
+              %dd= f.time_select :end_time
+
+            .col-md-4
+              %dt= f.label :days_of_the_week
+              %ul.dropdown-menu
+        .form-group.col-md-12
+          %dl
+            %dt= f.label :description
+            %dd= f.text_area :description, class: 'form-control'
+      %fieldset.actions
+        = f.submit 'Add Course', class: 'btn btn-success'
   %table.table
     %thead
       %tr
@@ -13,9 +45,10 @@
         %td.col-md-1= course.name
         %td.col-md-5
           = course.description
-          %button.btn.btn-default.btn-xs.show_text Read More
+          - if course.description.length >= 200
+            %button.btn.btn-default.btn-xs.show_text Read More 
         %td.col-md-3
-        %td.col-md-1 course.teacher_name
+        %td.col-md-1= course.teacher_name
         %td.col-md-2
           %button.btn.btn-warning.btn-xs Edit Course
           %button.btn.btn-danger.btn-xs Delete Course
