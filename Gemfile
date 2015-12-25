@@ -14,8 +14,6 @@ gem 'adequate_exposure'
 gem 'bootstrap-sass'
 gem 'zurb-foundation'
 gem 'filepicker-rails'
-gem 'formal'
-gem 'factory_girl_rails'
 gem 'twitter-bootstrap-rails'
 gem 'formal'
 
