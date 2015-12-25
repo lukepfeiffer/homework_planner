@@ -13,4 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require courses
 //= require_tree .
+
+$(document).ready(function(){
+  $('.show_form').click(function(){
+    $('.hidden_form').toggle(200);
+  });
+});

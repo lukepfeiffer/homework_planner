@@ -1,49 +1,52 @@
 %h1.page-header Courses
-- if user_signed_in?
-  %button.btn.btn-primary.show_form Add Course
-  .hidden_form
-    = form_for course do |f|
-      %fieldset
-        = f.hidden_field :user_id, value: current_user.id
-        .form-group.col-md-12
-          %dl
-            .col-md-6
-              %dt= f.label :name
-              %dd= f.text_field :name, class: 'form-control'
-            .col-md-6
-              %dt= f.label :teacher_name
-              %dd= f.text_field :teacher_name, class: 'form-control'
-        .form-group.col-md-12
-          %dl
-            .col-md-4
-              %dt= f.label :start_time
-              %dd= f.time_select :start_time, ampm: true
+%section#courses
+  - if user_signed_in?
+    %button.btn.btn-primary.show_form Add Course
+    .hidden_form
+      = form_for course do |f|
+        %fieldset
+          = f.hidden_field :user_id, value: current_user.id
+          .form-group.col-md-12
+            %dl
+              .col-md-6
+                %dt= f.label :name
+                %dd= f.text_field :name, class: 'form-control'
+              .col-md-6
+                %dt= f.label :teacher_name
+                %dd= f.text_field :teacher_name, class: 'form-control'
+          .form-group.col-md-12
+            %dl
+              .col-md-4
+                %dt= f.label :start_time
+                %dd= f.time_select :start_time, ampm: true
 
-            .col-md-4
-              %dt= f.label :end_time
-              %dd= f.time_select :end_time, ampm: true
+              .col-md-4
+                %dt= f.label :end_time
+                %dd= f.time_select :end_time, ampm: true
 
-            .col-md-4
-              %dt= f.label :days_of_the_week
-              %ul.dropdown-menu
-      %fieldset.actions
-        = f.submit 'Add Course', class: 'btn btn-success'
-  %table.table
-    %thead
-      %tr
-        %th Course Name
-        %th Schedule
-        %th Teacher Name
-        %th
-    %tbody
-      - courses.each do |course|
-        %td.col-md-2= course.name
-        %td.col-md-4
-          = course.date_format(course.start_time)
-          = course.date_format(course.end_time)
-        %td.col-md-2= course.teacher_name
-        %td.col-md-4
-          %button.btn.btn-warning.btn-xs Edit Course
-          %button.btn.btn-danger.btn-xs Delete Course
-- else
-  = render 'example'
+              .col-md-4
+                %dt= f.label :days_of_the_week
+                %ul.dropdown-menu
+        %fieldset.actions
+          = f.submit 'Add Course', class: 'btn btn-success', id: 'submit_course'
+    %table.table
+      %thead
+        %tr
+          %th Course Name
+          %th Teacher Name
+          %th Schedule
+          %th Current Assignments
+          %th
+      %tbody
+        - courses.each do |course|
+          %td.col-md-1= course.name
+          %td.col-md-1= course.teacher_name
+          %td.col-md-4
+            = course.date_format(course.start_time)
+            = course.date_format(course.end_time)
+          %td.col-md-2
+          %td.col-md-4
+            %button.btn.btn-warning.btn-xs Edit Course
+            %button.btn.btn-danger.btn-xs Delete Course
+  - else
+    = render 'example'
