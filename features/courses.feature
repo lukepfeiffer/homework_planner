@@ -6,7 +6,7 @@ Feature: Courses
     And that user has the following course:
       | name        | Course Name |
       | description | Cool Class  |
-    When I sign in as a user
+    And I sign in as a user
     And I follow "Courses"
 
     Then I should see "Course Name"

@@ -1,5 +1,32 @@
 %h1.header Homework
-- if user_signed_in?
-  %div= current_user.email
-- else
-  = render 'example'
+%section#homework
+  - if user_signed_in?
+    - if homeworks.any?
+      %table.table
+        %thead
+          %tr
+            %th Homework
+            %th Course
+            %th Description
+            %th Due Date
+            %th Estimated Length
+            %th
+      %tbody
+        - homeworks.each do |homework|
+          %tr
+            %td.col-md-1= homework.name
+            %td.col-md-1= homework.course
+            %td.col-md-5
+              = homework.description
+              -# - if homework.description.length >= 200
+              -#   %button.btn.btn-default.btn-xs.show_text Read More
+            %td.col-md-2= homework.due_date
+            %td.col-md-1= homework.time_approximation
+            %td.col-md-2
+              %button.btn.btn-warning.btn-xs Edit Homework
+              %button.btn.btn-danger.btn-xs Delete Homework
+    - else 
+      %h1.page-header
+        %small Looks like you have no homework!
+  - else
+    = render 'example'

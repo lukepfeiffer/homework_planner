@@ -35,7 +35,7 @@
           %th Course Name
           %th Teacher Name
           %th Schedule
-          %th Current Assignments
+          %th Assignment Count
           %th
       %tbody
         - courses.each do |course|
@@ -44,7 +44,7 @@
           %td.col-md-4
             = course.date_format(course.start_time)
             = course.date_format(course.end_time)
-          %td.col-md-2
+          %td.col-md-2= course.homeworks.count
           %td.col-md-4
             %button.btn.btn-warning.btn-xs Edit Course
             %button.btn.btn-danger.btn-xs Delete Course
