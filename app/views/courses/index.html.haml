@@ -1,5 +1,23 @@
 %h1.header Courses
 - if user_signed_in?
-  %div= current_user.email
+  %table.table
+    %thead
+      %tr
+        %th Course Name
+        %th Description
+        %th Schedule
+        %th Teacher Name
+        %th
+    %tbody
+      - courses.each do |course|
+        %td.col-md-1= course.name
+        %td.col-md-5
+          = course.description
+          %button.btn.btn-default.btn-xs.show_text Read More
+        %td.col-md-3
+        %td.col-md-1 course.teacher_name
+        %td.col-md-2
+          %button.btn.btn-warning.btn-xs Edit Course
+          %button.btn.btn-danger.btn-xs Delete Course
 - else
   = render 'example'

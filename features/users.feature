@@ -16,5 +16,4 @@ Feature: User
     When I fill in "email" with "email@example.com"
     And I fill in "password" with "password"
     And I press "Sign In"
-
-    Then I should be on the "/homeworks" page
+    And I follow Courses

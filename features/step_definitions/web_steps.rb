@@ -1,3 +1,11 @@
+When /^I sign in as a user$/ do
+  visit root_path
+  fill_in 'email', with: 'email@example.com'
+  fill_in 'password', with: 'password'
+  click_button 'Sign In'
+  expect(page.current_path).to eq('/homeworks')
+end
+
 When /^I follow "(.+)"$/ do |link_name|
   click_link link_name
 end
