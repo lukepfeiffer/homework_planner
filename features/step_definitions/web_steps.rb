@@ -10,6 +10,10 @@ And /^I am on the "(.+)" page$/ do |path|
   visit path
 end
 
+Given /^I have a created user$/ do
+  FactoryGirl.create(:user)
+end
+
 When /^I fill in "(.+)" with "(.+)"$/ do |field, value|
   fill_in field, with: value
 end
