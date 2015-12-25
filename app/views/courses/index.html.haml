@@ -26,30 +26,21 @@
             .col-md-4
               %dt= f.label :days_of_the_week
               %ul.dropdown-menu
-        .form-group.col-md-12
-          %dl
-            %dt= f.label :description
-            %dd= f.text_area :description, class: 'form-control'
       %fieldset.actions
         = f.submit 'Add Course', class: 'btn btn-success'
   %table.table
     %thead
       %tr
         %th Course Name
-        %th Description
         %th Schedule
         %th Teacher Name
         %th
     %tbody
       - courses.each do |course|
-        %td.col-md-1= course.name
-        %td.col-md-5
-          = course.description
-          - if course.description.length >= 200
-            %button.btn.btn-default.btn-xs.show_text Read More 
-        %td.col-md-3
-        %td.col-md-1= course.teacher_name
-        %td.col-md-2
+        %td.col-md-2= course.name
+        %td.col-md-4
+        %td.col-md-2= course.teacher_name
+        %td.col-md-4
           %button.btn.btn-warning.btn-xs Edit Course
           %button.btn.btn-danger.btn-xs Delete Course
 - else

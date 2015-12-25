@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20151225141240) do
   create_table "courses", force: :cascade do |t|
     t.time    "start_time"
     t.time    "end_time"
-    t.text    "description"
     t.string  "name"
     t.string  "teacher_name"
     t.integer "days_of_the_week"
