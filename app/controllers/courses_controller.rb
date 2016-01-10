@@ -7,7 +7,6 @@ class CoursesController < ApplicationController
   def create
     course = Course.new(courses_params)
     course.save
-    redirect_to courses_path
   end
 
   private
