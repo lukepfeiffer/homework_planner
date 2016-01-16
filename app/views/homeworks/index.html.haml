@@ -35,14 +35,14 @@
             %th
         %tbody
           - homeworks.each do |homework|
-            %tr
+            %tr.table_row
               %td.col-md-2= homework.name
               %td.col-md-2= homework.course.name
               %td.col-md-4= homework.description
               %td.col-md-2= homework.due_date.strftime('%b %-d, %Y')
               %td.col-md-1= homework.time_approximation
               %td.col-md-1
-                %button.btn.btn-danger.btn-sm Delete
+                %button.btn.btn-danger.btn-sm.delete_button{id: homework.id} Delete
     - else 
       %h1.page-header
         %small Looks like you have no homework!

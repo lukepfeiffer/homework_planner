@@ -11,4 +11,17 @@ $(document).ready(function(){
       }
     })
   });
+
+  $('.delete_button').click(function(){
+    deleteButton = $(this)
+    id = deleteButton.attr('id')
+    $.ajax({type: "delete",
+      method: "DELETE",
+      url: "/homeworks/" + id,
+      success: function(){
+        deleteButton.closest('.table_row').hide(100)
+      }
+    })
+  });
+
 });

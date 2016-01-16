@@ -12,6 +12,11 @@ class HomeworksController < ApplicationController
     homework.save
   end
 
+  def destroy
+    homework = Homework.find(params[:id])
+    homework.destroy
+  end
+
   private
   def homeworks_params
     params.require(:homework).permit(

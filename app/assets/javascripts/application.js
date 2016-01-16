@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require courses
+//= require homeworks
 //= require_tree .
 
 $(document).ready(function(){
