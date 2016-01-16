@@ -1,7 +1,29 @@
 %h1.header Homework
-%section#homework
+%section#homeworks
   - if user_signed_in?
-    - if homeworks.any?
+    %button.btn.btn-default.show_form Add Assignement
+    .hidden_form
+      = form_for homework do |f|
+        %fieldset
+          .form-group.col-md-6
+            %dl.col-md-6
+              %dt= f.label :assignment_name
+              %dd= f.text_field :name, class: 'form-control'
+            %dl.col-md-6
+              %dt= f.label :course
+              %dd= f.select :course_id, options_for_select(courses.collect { |course| [course.name.titleize, course.id] }, 1), {}, class: 'form-control form-group'
+            %dl.col-md-12
+              %dt= f.label :description
+              %dd= f.text_area :description, class: 'form-control'
+            %dl.col-md-6
+              %dt= f.label :due_date
+              %dd= f.date_select :due_date
+            %dl.col-md-6
+              %dt= f.label 'Time Estimate (hours)'
+              %dd= f.number_field :time_approximation, class: 'form-control', steps: 'any'
+        %fieldset.actions
+          = f.submit 'Add Assignment', class: 'btn btn-success btn-sm', id: 'submit_course'
+    - if homeworks.present?
       %table.table
         %thead
           %tr
@@ -9,22 +31,18 @@
             %th Course
             %th Description
             %th Due Date
-            %th Estimated Length
+            %th Estimate
             %th
-      %tbody
-        - homeworks.each do |homework|
-          %tr
-            %td.col-md-1= homework.name
-            %td.col-md-1= homework.course
-            %td.col-md-5
-              = homework.description
-              -# - if homework.description.length >= 200
-              -#   %button.btn.btn-default.btn-xs.show_text Read More
-            %td.col-md-2= homework.due_date
-            %td.col-md-1= homework.time_approximation
-            %td.col-md-2
-              %button.btn.btn-warning.btn-xs Edit Homework
-              %button.btn.btn-danger.btn-xs Delete Homework
+        %tbody
+          - homeworks.each do |homework|
+            %tr
+              %td.col-md-2= homework.name
+              %td.col-md-2= homework.course.name
+              %td.col-md-4= homework.description
+              %td.col-md-2= homework.due_date.strftime('%b %-d, %Y')
+              %td.col-md-1= homework.time_approximation
+              %td.col-md-1
+                %button.btn.btn-danger.btn-sm Delete
     - else 
       %h1.page-header
         %small Looks like you have no homework!

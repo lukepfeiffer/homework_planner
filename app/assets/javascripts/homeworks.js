@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('#courses form').submit(function(event){
+  $('#homeworks form').submit(function(event){
     event.preventDefault();
     var form = $(this)
     $.ajax({type: "post",
