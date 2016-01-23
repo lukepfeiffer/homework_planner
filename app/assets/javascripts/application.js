@@ -16,10 +16,3 @@
 //= require courses
 //= require homeworks
 //= require_tree .
-
-$(document).ready(function(){
-  $('.show_form').click(function(){
-    $('.hidden_form').toggle(200);
-    $('.show_form').hide(200);
-  });
-});

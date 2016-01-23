@@ -6,20 +6,18 @@ $(document).ready(function(){
       url: form.attr("action"),
       data: form.serialize(),
       success: function(response){
-        ('.table-striped').html(response)
+        $('.table-striped tbody').prepend(response)
         form.find('textfield').val('');
       }
     })
   });
 
-  $('.delete_button').click(function(){
-    deleteButton = $(this)
-    id = deleteButton.attr('id')
+  $('.table-striped tbody').on('click', '.delete_button', function(){
+    var deleteButton = $(this)
     $.ajax({type: "delete",
-      method: "DELETE",
-      url: "/homeworks/" + id,
+      url: deleteButton.data('url'),
       success: function(){
-        deleteButton.closest('.table_row').hide(100)
+        deleteButton.closest('tr').remove()
       }
     })
   });

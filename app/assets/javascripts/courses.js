@@ -6,7 +6,8 @@ $(document).ready(function(){
       url: form.attr("action"),
       data: form.serialize(),
       success: function(response){
-        ('.table-striped').html(response)
+        debugger
+        $('.table-striped').html(response)
         form.find('textfield').val('');
       }
     })

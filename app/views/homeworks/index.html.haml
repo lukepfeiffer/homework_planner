@@ -1,30 +1,28 @@
 %h1.header Homework
 %section#homeworks
   - if user_signed_in?
-    %button.btn.btn-default.show_form Add Assignement
-    .hidden_form
-      = form_for homework do |f|
-        %fieldset
-          .form-group.col-md-6
-            %dl.col-md-6
-              %dt= f.label :assignment_name
-              %dd= f.text_field :name, class: 'form-control'
-            %dl.col-md-6
-              %dt= f.label :course
-              %dd= f.select :course_id, options_for_select(courses.collect { |course| [course.name.titleize, course.id] }, 1), {}, class: 'form-control form-group'
-            %dl.col-md-12
-              %dt= f.label :description
-              %dd= f.text_area :description, class: 'form-control'
-            %dl.col-md-6
-              %dt= f.label :due_date
-              %dd= f.date_select :due_date
-            %dl.col-md-6
-              %dt= f.label 'Time Estimate (hours)'
-              %dd= f.number_field :time_approximation, class: 'form-control', steps: 'any'
-        %fieldset.actions
-          = f.submit 'Add Assignment', class: 'btn btn-success btn-sm', id: 'submit_course'
+    = form_for homework do |f|
+      %fieldset
+        .form-group.col-md-6
+          %dl.col-md-6
+            %dt= f.label :assignment_name
+            %dd= f.text_field :name, class: 'form-control'
+          %dl.col-md-6
+            %dt= f.label :course
+            %dd= f.select :course_id, options_for_select(courses.collect { |course| [course.name.titleize, course.id] }, 1), {}, class: 'form-control form-group'
+          %dl.col-md-12
+            %dt= f.label :description
+            %dd= f.text_area :description, class: 'form-control'
+          %dl.col-md-6
+            %dt= f.label :due_date
+            %dd= f.date_field :due_date
+          %dl.col-md-6
+            %dt= f.label 'Time Estimate (hours)'
+            %dd= f.number_field :time_approximation, class: 'form-control', step: '0.25'
+      %fieldset.actions
+        = f.submit 'Add Assignment', class: 'btn btn-success btn-sm', id: 'submit_course'
     - if homeworks.present?
-      %table.table
+      %table.table-striped
         %thead
           %tr
             %th Homework
@@ -34,15 +32,7 @@
             %th Estimate
             %th
         %tbody
-          - homeworks.each do |homework|
-            %tr.table_row
-              %td.col-md-2= homework.name
-              %td.col-md-2= homework.course.name
-              %td.col-md-4= homework.description
-              %td.col-md-2= homework.due_date.strftime('%b %-d, %Y')
-              %td.col-md-1= homework.time_approximation
-              %td.col-md-1
-                %button.btn.btn-danger.btn-sm.delete_button{id: homework.id} Delete
+          = render partial: 'homework_row', collection: homeworks, as: :homework
     - else 
       %h1.page-header
         %small Looks like you have no homework!
