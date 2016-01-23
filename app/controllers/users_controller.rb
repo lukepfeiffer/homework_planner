@@ -4,7 +4,11 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       sign_in(user)
-      redirect_to assignments_path
+      if user.courses.present?
+        redirect_to assignments_path
+      else
+        redirect_to courses_path
+      end
     else
       redirect_to :root
     end

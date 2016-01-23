@@ -1,26 +1,6 @@
 %h1.header Assignments
 %section#assignments
   - if user_signed_in?
-    = form_for assignment do |f|
-      %fieldset
-        .form-group.col-md-6
-          %dl.col-md-6
-            %dt= f.label :assignment_name
-            %dd= f.text_field :name, class: 'form-control'
-          %dl.col-md-6
-            %dt= f.label :course
-            %dd= f.select :course_id, options_for_select(courses.collect { |course| [course.name.titleize, course.id] }, 1), {}, class: 'form-control form-group'
-          %dl.col-md-12
-            %dt= f.label :description
-            %dd= f.text_area :description, class: 'form-control'
-          %dl.col-md-6
-            %dt= f.label :due_date
-            %dd= f.date_field :due_date
-          %dl.col-md-6
-            %dt= f.label 'Time Estimate (hours)'
-            %dd= f.number_field :time_approximation, class: 'form-control', step: '0.25'
-      %fieldset.actions
-        = f.submit 'Add Assignment', class: 'btn btn-success btn-sm', id: 'submit_course'
     - if assignments.present?
       %table.table.table-striped
         %thead
@@ -36,5 +16,27 @@
     - else 
       %h1.page-header
         %small Looks like you have no assignments!
+    = form_for assignment do |f|
+      %fieldset
+        %dl
+          .col-md-5
+            %dt= f.label :assignment_name
+            %dd= f.text_field :name, class: 'form-control'
+
+          .col-md-3
+            %dt= f.label :course
+            %dd= f.select :course_id, options_for_select(courses.collect { |course| [course.name.titleize, course.id] }, 1), {}, class: 'form-control form-group'
+        %dl
+          .col-md-5
+            %dt= f.label 'Time Estimate (hours)'
+            %dd= f.number_field :time_approximation, class: 'form-control', step: '0.25'
+          .col-md-5
+            %dt= f.label :due_date
+            %dd= f.date_field :due_date
+        %dl.col-md-8
+          %dt= f.label :description
+          %dd= f.text_area :description, class: 'form-control'
+      %fieldset.actions
+        = f.submit 'Add Assignment', class: 'btn btn-success btn-sm', id: 'submit_course'
   - else
     = render 'example'

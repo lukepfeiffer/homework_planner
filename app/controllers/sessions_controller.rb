@@ -4,7 +4,11 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       sign_in(user)
       flash.now.alert = "Sign up successful"
-      redirect_to assignments_path
+      if user.courses.present?
+        redirect_to assignments_path
+      else
+        redirect_to courses_path
+      end
     else
       flash.now.alert = "Your email and password do not match"
       redirect_to :root
