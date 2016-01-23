@@ -1,6 +1,6 @@
-class CreateHomework < ActiveRecord::Migration
+class CreateAssignment < ActiveRecord::Migration
   def change
-    create_table :homeworks do |t|
+    create_table :assignments do |t|
       t.string :name
       t.text :description
       t.integer :course_id

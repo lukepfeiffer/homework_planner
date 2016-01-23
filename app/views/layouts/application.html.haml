@@ -26,7 +26,7 @@
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
             %li= link_to "Courses", courses_path
-            %li= link_to "Homework", homeworks_path
+            %li= link_to "Assignments", assignments_path
             - if user_signed_in?
               %li= link_to "Signout", sign_out_path, method: :delete
             - else

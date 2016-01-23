@@ -1,7 +1,7 @@
-%h1.header Homework
-%section#homeworks
+%h1.header Assignments
+%section#assignments
   - if user_signed_in?
-    = form_for homework do |f|
+    = form_for assignment do |f|
       %fieldset
         .form-group.col-md-6
           %dl.col-md-6
@@ -21,20 +21,20 @@
             %dd= f.number_field :time_approximation, class: 'form-control', step: '0.25'
       %fieldset.actions
         = f.submit 'Add Assignment', class: 'btn btn-success btn-sm', id: 'submit_course'
-    - if homeworks.present?
+    - if assignments.present?
       %table.table.table-striped
         %thead
           %tr
-            %th Homework
+            %th Assignment
             %th Course
             %th Description
             %th Due Date
             %th Estimate
             %th
         %tbody
-          = render partial: 'homework_row', collection: homeworks, as: :homework
+          = render partial: 'assignment_row', collection: assignments, as: :assignment
     - else 
       %h1.page-header
-        %small Looks like you have no homework!
+        %small Looks like you have no assignments!
   - else
     = render 'example'
