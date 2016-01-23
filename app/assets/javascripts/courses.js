@@ -6,10 +6,21 @@ $(document).ready(function(){
       url: form.attr("action"),
       data: form.serialize(),
       success: function(response){
-        debugger
-        $('.table-striped').html(response)
-        form.find('textfield').val('');
+        $('.table-striped tbody').append(response)
       }
     })
   });
+
+  $('.table-striped tbody').on('click', '.delete_button', function(){
+    var deleteButton = $(this)
+    if (confirm('Are you sure? Deleting this course will delete all assignments associated with this course as well.')) {
+      $.ajax({type: "delete",
+        url: deleteButton.data('url'),
+        success: function(){
+          deleteButton.closest('tr').remove()
+        }
+      })
+    }
+  });
+
 });

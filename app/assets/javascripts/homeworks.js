@@ -7,7 +7,6 @@ $(document).ready(function(){
       data: form.serialize(),
       success: function(response){
         $('.table-striped tbody').prepend(response)
-        form.find('textfield').val('');
       }
     })
   });
