@@ -6,13 +6,18 @@ class CoursesController < ApplicationController
 
   def create
     course = Course.new(courses_params)
-    course.save
-    render partial: 'course_row', locals: {course: course}
+    if course.save
+      render partial: 'course_row', locals: {course: course}
+    else
+      head :no_content
+    end
   end
 
   def destroy
     course = Course.find(params[:id])
+    assignment = Assignment.where(course_id: course.id)
     course.destroy
+    assignment.destroy_all
     head :no_content
   end
 

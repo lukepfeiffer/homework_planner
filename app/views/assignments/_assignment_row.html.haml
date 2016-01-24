@@ -1,8 +1,8 @@
 %tr
   %td.col-md-2= assignment.name
   %td.col-md-2= assignment.course.name
-  %td.col-md-4= assgnment.description
+  %td.col-md-4= assignment.description
   %td.col-md-2= assignment.due_date.strftime('%b %-d, %Y')
   %td.col-md-1= assignment.time_approximation
   %td.col-md-1
-    %button.btn.btn-danger.btn-sm.delete_button{data: {url: assignment(assignment)}} Delete
+    %button.btn.btn-danger.btn-sm.delete_button{data: {url: assignment_path(assignment)}} Delete

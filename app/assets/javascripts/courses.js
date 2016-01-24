@@ -11,7 +11,7 @@ $(document).ready(function(){
     })
   });
 
-  $('.table-striped tbody').on('click', '.delete_button', function(){
+  $('#courses .table-striped tbody').on('click', '.delete_button', function(){
     var deleteButton = $(this)
     if (confirm('Are you sure? Deleting this course will delete all assignments associated with this course as well.')) {
       $.ajax({type: "delete",

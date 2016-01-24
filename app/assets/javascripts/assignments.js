@@ -1,17 +1,18 @@
 $(document).ready(function(){
-  $('#homeworks form').submit(function(event){
+  $('#assignments form').submit(function(event){
     event.preventDefault();
     var form = $(this)
     $.ajax({type: "post",
       url: form.attr("action"),
       data: form.serialize(),
       success: function(response){
+        debugger
         $('.table-striped tbody').prepend(response)
       }
     })
   });
 
-  $('.table-striped tbody').on('click', '.delete_button', function(){
+  $('#assignments .table-striped tbody').on('click', '.delete_button', function(){
     var deleteButton = $(this)
     $.ajax({type: "delete",
       url: deleteButton.data('url'),

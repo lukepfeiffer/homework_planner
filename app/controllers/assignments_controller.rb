@@ -9,8 +9,11 @@ class AssignmentsController < ApplicationController
 
   def create
     assignment = Assignment.new(assignments_params)
-    assignment.save
-    render partial: 'assignment_row', locals: {assignment: assignment}
+    if assignment.save
+      render partial: 'assignment_row', locals: {assignment: assignment}
+    else
+      head :no_content
+    end
   end
 
   def destroy
