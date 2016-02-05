@@ -3,7 +3,6 @@ When /^I sign in as a user$/ do
   fill_in 'email', with: 'email@example.com'
   fill_in 'password', with: 'password'
   click_button 'Sign In'
-  expect(page.current_path).to eq('/homeworks')
 end
 
 When /^I follow "(.+)"$/ do |link_name|
@@ -36,4 +35,7 @@ end
 
 Then /^I should see "(.+)"$/ do |content|
   expect(page).to have_content(content)
+end
+Then /^I should not see "(.+)"$/ do |content|
+  expect(page).not_to have_content(content)
 end
