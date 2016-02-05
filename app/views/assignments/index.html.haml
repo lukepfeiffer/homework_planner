@@ -37,6 +37,6 @@
           %dt= f.label :description
           %dd= f.text_area :description, class: 'form-control'
       %fieldset.actions
-        = f.submit 'Add Assignment', class: 'btn btn-success btn-sm', id: 'submit_course'
+        = f.submit 'Add Assignment', class: 'btn btn-success', id: 'submit_course'
   - else
     = render 'example'

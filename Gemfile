@@ -16,6 +16,7 @@ gem 'zurb-foundation'
 gem 'filepicker-rails'
 gem 'twitter-bootstrap-rails'
 gem 'formal'
+gem 'capybara-webkit'
 
 group :development, :test do
   gem 'pry-rails'

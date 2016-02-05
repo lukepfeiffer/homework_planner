@@ -35,6 +35,6 @@ Feature: Courses
   #   And I sign in as a user
   #   And I follow "Courses"
 
-  #   When I press "Delete Course"
+  #   When I press "Delete"
 
   #   Then I should not see "Course Name"
