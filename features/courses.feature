@@ -41,3 +41,19 @@ Feature: Courses
     And I confirm the dialogue
 
     Then I should not see "Science"
+
+  @javascript
+  Scenario: User edits course
+    Given the following user:
+      | email    | email@example.com |
+      | password | password          |
+    And that user has the following course:
+      | name        | Science |
+    And I sign in as a user
+    And I follow "Courses"
+
+    When I press "Edit"
+    And I fill in "edit_course_name" with "English"
+    And I press "Save"
+
+    Then I should see "English"

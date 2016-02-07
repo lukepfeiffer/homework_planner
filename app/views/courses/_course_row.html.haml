@@ -2,7 +2,7 @@
   = form_for course, html: {class: 'edit_form'} do |f|
     %td.col-md-2
       .text= course.name
-      .field= f.text_field :name
+      .field= f.text_field :name, id: 'edit_course_name'
     %td.col-md-2
       .text= course.teacher_name
       .field= f.text_field :teacher_name
