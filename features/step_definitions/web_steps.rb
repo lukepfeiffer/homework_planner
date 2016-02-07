@@ -5,6 +5,10 @@ When /^I sign in as a user$/ do
   click_button 'Sign In'
 end
 
+When /^I confirm the dialogue$/ do
+  page.driver.browser.switch_to.alert.accept
+end
+
 When /^I follow "(.+)"$/ do |link_name|
   click_link link_name
 end

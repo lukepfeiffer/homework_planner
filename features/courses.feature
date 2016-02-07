@@ -10,6 +10,7 @@ Feature: Courses
 
     Then I should see "Course Name"
 
+  @javascript
   Scenario: User creates new course
     Given the following user:
       | email    | email@example.com |
@@ -26,15 +27,17 @@ Feature: Courses
     Then I should see "Course"
     And I should see "Teacher"
 
-  # Scenario: User delete course
-  #   Given the following user:
-  #     | email    | email@example.com |
-  #     | password | password          |
-  #   And that user has the following course:
-  #     | name        | Course Name |
-  #   And I sign in as a user
-  #   And I follow "Courses"
+  @javascript
+  Scenario: User delete course
+    Given the following user:
+      | email    | email@example.com |
+      | password | password          |
+    And that user has the following course:
+      | name        | Science |
+    And I sign in as a user
+    And I follow "Courses"
 
-  #   When I press "Delete"
+    When I press "Delete"
+    And I confirm the dialogue
 
-  #   Then I should not see "Course Name"
+    Then I should not see "Science"
