@@ -5,8 +5,15 @@ class CoursesController < ApplicationController
   end
 
   def create
-    course = Course.new(courses_params)
     if course.save
+      render partial: 'course_row', locals: {course: course}
+    else
+      head :no_content
+    end
+  end
+
+  def update
+    if course.update(course_params)
       render partial: 'course_row', locals: {course: course}
     else
       head :no_content
@@ -22,7 +29,7 @@ class CoursesController < ApplicationController
   end
 
   private
-  def courses_params
+  def course_params
     params.require(:course).permit(
       :name,
       :teacher_name,

@@ -15,7 +15,7 @@
     - else 
       %h1.page-header
         %small Create some courses to add assignments
-    = form_for course do |f|
+    = form_for course, html: {id: 'new'} do |f|
       %fieldset
         = f.hidden_field :user_id, value: current_user.id
         .form-group.col-md-12

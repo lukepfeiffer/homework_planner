@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('#courses form').submit(function(event){
+  $('#courses #new').submit(function(event){
     event.preventDefault();
     var form = $(this)
     $.ajax({type: "post",
@@ -21,6 +21,23 @@ $(document).ready(function(){
         }
       })
     }
+  });
+
+  $('#courses').on('click', '.edit_course', function(event){
+    event.preventDefault();
+    $(this).closest('tr').find('.field, .text, .save_button, .edit_course').toggle();
+  });
+
+  $('#courses').on('submit', '.edit_form', function(event){
+    event.preventDefault();
+    var form = $(this)
+    $.ajax({type: "patch",
+      url: form.attr("action"),
+      data: form.serialize(),
+      success: function(response){
+        form.closest('tr').replaceWith(response)
+      }
+    })
   });
 
 });
