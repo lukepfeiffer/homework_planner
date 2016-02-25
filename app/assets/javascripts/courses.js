@@ -24,9 +24,9 @@ $(document).ready(function(){
     }
   });
 
-  $('#courses').on('click', '.edit_course', function(event){
+  $('#courses').on('click', '.edit_course, .cancel_button', function(event){
     event.preventDefault();
-    $(this).closest('tr').find('.field, .text, .save_button, .edit_course').toggle();
+    $(this).closest('tr').find('.field, .text, .save_button, .edit_course, .delete_button, .cancel_button').toggle();
   });
 
   $('#courses').on('submit', '.edit_form', function(event){

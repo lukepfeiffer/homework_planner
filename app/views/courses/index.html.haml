@@ -1,18 +1,17 @@
 %h1.page-header Courses
 %section#courses
   - if user_signed_in?
-    - if courses.present?
-      %table.table.table-striped
-        %thead
-          %tr
-            %th Course Name
-            %th Teacher Name
-            %th # of assignments
-            %th Schedule
-            %th
-        %tbody
-          = render partial: 'course_row', collection: courses, as: :course
-    - else 
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Course Name
+          %th Teacher Name
+          %th # of assignments
+          %th Schedule
+          %th
+      %tbody
+        = render partial: 'course_row', collection: courses, as: :course
+    - if courses.blank?
       %h1.page-header
         %small Create some courses to add assignments
     = form_for course, html: {id: 'new'} do |f|

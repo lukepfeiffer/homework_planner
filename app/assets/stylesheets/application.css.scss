@@ -52,6 +52,16 @@ body{
   }
 }
 
+tr{
+  .field{
+    display: none;
+  }
+
+  .hidden_button{
+    display: none;
+  }
+}
+
 .edit_form{
   button{
     display: inline-block;
