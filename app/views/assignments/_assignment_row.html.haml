@@ -1,8 +1,20 @@
-%tr
-  %td.col-md-2= assignment.name
-  %td.col-md-2= assignment.course.name
-  %td.col-md-4= assignment.description
-  %td.col-md-2= assignment.due_date.strftime('%b %-d, %Y')
-  %td.col-md-1= assignment.time_approximation
-  %td.col-md-1
-    %button.btn.btn-danger.btn-sm.delete_button{data: {url: assignment_path(assignment)}} Delete
+.assignment
+  .assignment_names
+    %li
+      %a{id: assignment.id.to_s}= assignment.name
+
+  .assignment_details{id: assignment.id.to_s + '_assignment'}
+    %li
+      = form_for assignment, html: {class: 'edit_form'} do |f|
+        .text= assignment.name
+        .field= f.text_field :name, class: 'form-control', id: 'edit_assignment_name'
+        = assignment.course.name
+        .text= assignment.description
+        .field= f.text_area :description, class: 'form-control'
+        .text= assignment.due_date.strftime('%b %-d, %Y')
+        .field= f.date_field :due_date
+        .text= assignment.time_approximation
+        .field= f.number_field :time_approximation, class: 'form-control', step: '0.25'
+        %button.btn.btn-warning.btn-sm.edit_course Edit
+        %button.btn.btn-warning.btn-sm.save_button Save
+        %button.btn.btn-danger.btn-sm.delete_button{data: {url: assignment_path(assignment)}} Delete

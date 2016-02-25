@@ -18,14 +18,14 @@ Feature: Courses
     And I sign in as a user
     And I follow "Courses"
 
-    When I fill in "course_name" with "Course"
-    And I fill in "Teacher name" with "Teacher"
-    And I fill in "Start time" with "1:00 PM"
-    And I fill in "End time" with "2:00 PM"
+    When I fill in "course_name" with "Science"
+    And I fill in "Teacher name" with "Woeley"
+    And I fill in "Start time" with "01:00 PM"
+    And I fill in "End time" with "02:00 PM"
     And I press "Add Course"
 
-    Then I should see "Course"
-    And I should see "Teacher"
+    Then I should see "Science"
+    And I should see "Woeley"
 
   @javascript
   Scenario: User delete course

@@ -2,17 +2,7 @@
 %section#assignments
   - if user_signed_in?
     - if assignments.present?
-      %table.table.table-striped
-        %thead
-          %tr
-            %th Assignment
-            %th Course
-            %th Description
-            %th Due Date
-            %th Estimate
-            %th
-        %tbody
-          = render partial: 'assignment_row', collection: assignments, as: :assignment
+      .assignment_container= render partial: 'assignment_row', collection: assignments, as: :assignment
     - else 
       %h1.page-header
         %small Looks like you have no assignments!
