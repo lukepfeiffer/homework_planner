@@ -1,9 +1,8 @@
 %h1.header Assignments
 %section#assignments
   - if user_signed_in?
-    - if assignments.present?
-      %ul.assignment_container= render partial: 'assignment_row', collection: assignments, as: :assignment
-    - else 
+    .assignment_container= render partial: 'assignment_container', collection: assignments, as: :assignment
+    - if assignments.empty?
       %h1.page-header
         %small Looks like you have no assignments!
     = form_for assignment, html: {id: 'new'}  do |f|

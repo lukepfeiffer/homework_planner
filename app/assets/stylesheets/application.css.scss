@@ -18,49 +18,20 @@
 
 body{
   margin-bottom: 15px;
+  line-height: 120%;
 }
 
 .bold_text{
   font-weight: bold;
 }
 
+#new{
+  clear: both;
+}
+
 .assignment_container{
   width: 100%;
 }
-
-.assignment_details .field{
-  margin: 10px 0;
-}
-
-.assignment_names{
-  color: #000;
-  margin: 4px 0;
-}
-
-.assignment_names:hover{
-  font-weight: bold;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.assignment_names li{
-  list-style-type: none;
-}
-
-.assignment_details{
-  display: none;
-  overflow: auto;
-}
-
-.assignment_names a{
-  padding: 2px 10px;
-  border-bottom: 1px solid #ccc;
-}
-
-
-.assignment_details{
-}
-
 .cancel_button{
   display: none;
 }
@@ -68,6 +39,22 @@ body{
 .save_button{
   display: none;
 }
-.field{
+
+.assignment_container{
+  dt{
+    cursor: pointer;
+    display: block;
+    clear: both;
+  }
+  dd{
+    display: none;
+    clear: both;
+  }
+}
+
+.edit_form{
+  button{
+    display: inline-block;
+  }
   display: none;
 }

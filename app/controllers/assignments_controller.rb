@@ -8,9 +8,17 @@ class AssignmentsController < ApplicationController
   end
 
   def create
-    assignment = Assignment.new(assignments_params)
+    assignment = Assignment.new(assignment_params)
     if assignment.save
-      render partial: 'assignment_row', locals: {assignment: assignment}
+      render partial: 'assignment_container', locals: {assignment: assignment}
+    else
+      head :no_content
+    end
+  end
+
+  def update
+    if assignment.update(assignment_params)
+      render partial: 'assignment_container', locals: {assignment: assignment}
     else
       head :no_content
     end
@@ -23,7 +31,7 @@ class AssignmentsController < ApplicationController
   end
 
   private
-  def assignments_params
+  def assignment_params
     params.require(:assignment).permit(
       :name,
       :description,
