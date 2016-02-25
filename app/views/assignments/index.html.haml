@@ -6,7 +6,7 @@
     - else 
       %h1.page-header
         %small Looks like you have no assignments!
-    = form_for assignment do |f|
+    = form_for assignment, html: {id: 'new'}  do |f|
       %fieldset
         %dl
           .col-md-5

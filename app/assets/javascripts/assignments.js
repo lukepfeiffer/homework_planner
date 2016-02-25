@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('#assignments form').submit(function(event){
+  $('#assignments #new').submit(function(event){
     event.preventDefault();
     var form = $(this)
     $.ajax({type: "post",
@@ -21,9 +21,33 @@ $(document).ready(function(){
     $.ajax({type: "delete",
       url: deleteButton.data('url'),
       success: function(){
-        oeleteButton.closest('.assignment_li').remove()
+        deleteButton.closest('.assignment_li').remove()
       }
     })
   });
+
+  $('#assignments').on('click', '.edit_assignment', function(event){
+    event.preventDefault();
+    $(this).closest('li').find('.field, .text, .save_button, .edit_assignment, .cancel_button, .delete_button').toggle();
+  });
+
+  $('#assignments').on('click', '.cancel_button', function(event){
+    event.preventDefault();
+    $(this).closest('li').find('.field, .text, .save_button, .edit_assignment, .cancel_button, .delete_button').toggle();
+  });
+
+
+  $('#assignments').on('submit', '.edit_form', function(event){
+    event.preventDefault();
+    var form = $(this)
+    $.ajax({type: "patch",
+      url: form.attr("action"),
+      data: form.serialize(),
+      success: function(response){
+        form.closest('tr').replaceWith(response)
+      }
+    })
+  });
+
 
 });

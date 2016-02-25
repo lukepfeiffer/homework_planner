@@ -28,6 +28,10 @@ body{
   width: 100%;
 }
 
+.assignment_details .field{
+  margin: 10px 0;
+}
+
 .assignment_names{
   color: #000;
   margin: 4px 0;
@@ -55,6 +59,10 @@ body{
 
 
 .assignment_details{
+}
+
+.cancel_button{
+  display: none;
 }
 
 .save_button{
