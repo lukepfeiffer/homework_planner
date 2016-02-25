@@ -6,14 +6,14 @@ $(document).ready(function(){
       url: form.attr("action"),
       data: form.serialize(),
       success: function(response){
-        $('.table-striped tbody').prepend(response)
+        $('.assignment_container').append(response)
       }
     })
   });
 
   $('.assignment_names').on('click', 'a', function(){
-    assignmentId = $(this).attr('id')
-    $('#' + assignmentId + '_assignment').toggle();
+    var assignmentId = $(this).attr('id')
+    $('#' + assignmentId + '_assignment').toggle(50);
   });
 
   // $('#assignments .table-striped tbody').on('click', '.delete_button', function(){
