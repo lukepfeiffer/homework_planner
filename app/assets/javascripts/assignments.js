@@ -16,14 +16,14 @@ $(document).ready(function(){
     $('#' + assignmentId + '_assignment').toggle(50);
   });
 
-  // $('#assignments .table-striped tbody').on('click', '.delete_button', function(){
-  //   var deleteButton = $(this)
-  //   $.ajax({type: "delete",
-  //     url: deleteButton.data('url'),
-  //     success: function(){
-  //       deleteButton.closest('tr').remove()
-  //     }
-  //   })
-  // });
+  $('#assignments .assignment_details').on('click', '.delete_button', function(){
+    var deleteButton = $(this)
+    $.ajax({type: "delete",
+      url: deleteButton.data('url'),
+      success: function(){
+        oeleteButton.closest('.assignment_li').remove()
+      }
+    })
+  });
 
 });

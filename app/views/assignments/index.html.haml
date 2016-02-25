@@ -2,7 +2,7 @@
 %section#assignments
   - if user_signed_in?
     - if assignments.present?
-      .assignment_container= render partial: 'assignment_row', collection: assignments, as: :assignment
+      %ul.assignment_container= render partial: 'assignment_row', collection: assignments, as: :assignment
     - else 
       %h1.page-header
         %small Looks like you have no assignments!
