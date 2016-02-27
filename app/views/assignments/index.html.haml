@@ -1,30 +1,30 @@
-%h1.header Assignments
+%h1.page-header Assignments
 %section#assignments
   - if user_signed_in?
     .assignment_container= render partial: 'assignment_container', collection: assignments, as: :assignment
     - if assignments.empty?
       %h1.page-header
         %small Looks like you have no assignments!
+    %h1
+      %small.page-header Add Assignment
     = form_for assignment, html: {id: 'new'}  do |f|
       %fieldset
         %dl
-          .col-md-5
-            %dt= f.label :assignment_name
-            %dd= f.text_field :name, class: 'form-control'
+          %dt= f.label :name
+          %dd= f.text_field :name, class: 'form-control'
 
-          .col-md-3
-            %dt= f.label :course
-            %dd= f.select :course_id, options_for_select(courses.collect { |course| [course.name.titleize, course.id] }, 1), {}, class: 'form-control form-group'
-        %dl
-          .col-md-5
-            %dt= f.label 'Time Estimate (hours)'
-            %dd= f.number_field :time_approximation, class: 'form-control', step: '0.25'
-          .col-md-5
-            %dt= f.label :due_date
-            %dd= f.date_field :due_date
-        %dl.col-md-8
           %dt= f.label :description
           %dd= f.text_area :description, class: 'form-control'
+          %section.small_input
+            %dt= f.label :course
+            %dd= f.select :course_id, options_for_select(courses.collect { |course| [course.name.titleize, course.id] }, 1), {}, class: 'form-control'
+
+            %dt= f.label :due_date
+            %dd= f.date_field :due_date, class: 'form-control'
+
+            %dt= f.label 'Time Estimate (hours)'
+            %dd= f.number_field :time_approximation, class: 'form-control', step: '0.25'
+
       %fieldset.actions
         = f.submit 'Add Assignment', class: 'btn btn-success', id: 'submit_course'
   - else

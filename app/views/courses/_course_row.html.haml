@@ -2,17 +2,20 @@
   = form_for course, html: {class: 'edit_form'} do |f|
     %td.col-md-2
       .text= course.name
-      .field= f.text_field :name, id: 'edit_course_name'
+      .field= f.text_field :name, class: 'form-control', id: 'edit_course_name'
     %td.col-md-2
       .text= course.teacher_name
-      .field= f.text_field :teacher_name
+      .field= f.text_field :teacher_name, class: 'form-control'
     %td.col-md-2
       = course.assignments.count
     %td.col-md-4
-      .text= course.start_time.strftime('%I:%M %p') + ' - '
-      .field= f.time_field :start_time
-      .text= course.end_time.strftime('%I:%M %p')
-      .field= f.time_field :end_time
+      .time
+        .text
+          = course.start_time.strftime('%I:%M %p') + ' - '
+          = course.end_time.strftime('%I:%M %p')
+        .field
+          .col-md-6= f.time_field :start_time, ampm: true, class: 'form-control'
+          .col-md-6= f.time_field :end_time, ampm: true, class: 'form-control'
     %td.col-md-4
       %button.btn.btn-warning.btn-sm.edit_course Edit
       %button.btn.btn-warning.btn-sm.save_button Save

@@ -29,11 +29,11 @@
           %dl
             .col-md-4
               %dt= f.label :start_time
-              %dd= f.time_field :start_time, ampm: true
+              %dd= f.time_field :start_time, ampm: true, class: 'form-control'
 
             .col-md-4
               %dt= f.label :end_time
-              %dd= f.time_field :end_time, ampm: true
+              %dd= f.time_field :end_time, ampm: true, class: 'form-control'
 
             .col-md-4
               %dt= f.label :days_of_the_week

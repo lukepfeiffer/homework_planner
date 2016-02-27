@@ -4,17 +4,23 @@
   %dd{data: {id: assignment.id }}
     .col-md-6
       = form_for assignment, html: {class: 'edit_form'} do |f|
-        .field= f.text_field :name, class: 'form-control', id: 'edit_assignment_name'
-        .field= f.select :course_id, options_for_select(courses.collect { |course| [course.name.titleize, course.id] }, 1), {}, class: 'form-control form-group'
-        .field= f.date_field :due_date
-        .field= f.number_field :time_approximation, class: 'form-control', step: '0.25'
-        .field= f.text_area :description, class: 'form-control'
+        .form-group
+          .field= f.text_field :name, class: 'form-control', id: 'edit_assignment_name'
+          .field= f.select :course_id, options_for_select(courses.collect { |course| [course.name.titleize, course.id] }, 1), {}, class: 'form-control'
+          .field= f.text_area :description, class: 'form-control'
+          .field
+            = f.date_field :due_date, class: 'form-control inline'
+            = f.number_field :time_approximation, class: 'form-control inline', step: '0.25'
         %button.btn.btn-warning.btn-xs.save_button Save
         %button.btn.btn-danger.btn-xs.cancel_button Cancel
       .content
-        .text.bold_text= 'Due Date: ' + assignment.due_date.strftime('%b %-d, %Y')
-        .text.bold_text= 'Class: ' + assignment.course.name
+        .text.bold_text= assignment.course.name
         .text= assignment.description
-        .text.bold_text Time Approximation: #{assignment.time_approximation} (Hours)
+        .text
+          %span.bold_text
+            = assignment.due_date.strftime('%b %-d, %Y')
+          |
+          %span.bold_text
+            #{assignment.time_approximation} (Hours)
         %button.btn.btn-warning.btn-xs.edit_assignment Edit
         %button.btn.btn-danger.btn-xs.delete_button{data: {url: assignment_path(assignment)}} Delete
