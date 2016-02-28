@@ -36,7 +36,7 @@ class CoursesController < ApplicationController
       :user_id,
       :start_time,
       :end_time,
-      :days_of_the_week
+      days_of_the_week: []
     )
   end
 end
