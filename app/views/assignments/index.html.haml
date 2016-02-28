@@ -5,9 +5,9 @@
     - if assignments.empty?
       %h1.page-header
         %small Looks like you have no assignments!
-    %h1
-      %small.page-header Add Assignment
     = form_for assignment, html: {id: 'new'}  do |f|
+      %h1
+        %small.page-header Add Assignment
       %fieldset
         %dl
           %dt= f.label :name
