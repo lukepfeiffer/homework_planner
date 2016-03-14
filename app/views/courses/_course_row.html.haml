@@ -13,13 +13,16 @@
         .text
           = course.start_time.strftime('%I:%M %p') + ' - '
           = course.end_time.strftime('%I:%M %p')
-          .bold-text
+          %div
             - course.days_of_the_week.select do |string|
-              - if string.length > 3
-                = string[0...3] + ', '
+              - unless string.blank?
+                %strong
+                  = string[0...3]
         .field
-          .col-md-6= f.time_field :start_time, ampm: true, class: 'form-control'
-          .col-md-6= f.time_field :end_time, ampm: true, class: 'form-control'
+          %ul.list-inline
+            %li= f.time_field :start_time, ampm: true, class: 'form-control'
+            %li= f.time_field :end_time, ampm: true, class: 'form-control'
+          = f.select :days_of_the_week, options_for_select(Date::DAYNAMES), {}, multiple: true, class: 'form-control'
     %td.col-md-4
       %button.btn.btn-warning.btn-sm.edit_course Edit
       %button.btn.btn-warning.btn-sm.save_button Save

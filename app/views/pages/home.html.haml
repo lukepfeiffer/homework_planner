@@ -15,8 +15,9 @@
             %dt= f.label :password_confirmation
             %dd= f.password_field :password_confirmation, class: 'form-control'
         %fieldset.actions
-          = f.submit 'Sign Up', class: 'btn btn-success'
+          = f.submit 'Sign Up', class: 'btn btn-primary'
 
+  %br
   %p Already have an account?
   .row
     .col-md-6
@@ -28,4 +29,4 @@
             %dt= label_tag :password
             %dd= password_field_tag :password, nil, class: 'form-control'
         %fieldset.actions
-          = submit_tag "Sign In", class: 'btn btn-default'
+          = submit_tag "Sign In", class: 'btn btn-primary'

@@ -17,15 +17,13 @@
     = form_for course, html: {id: 'new'} do |f|
       %fieldset
         = f.hidden_field :user_id, value: current_user.id
-        .form-group.col-md-12
-          %dl
-            .col-md-6
-              %dt= f.label :course_name
-              %dd= f.text_field :name, class: 'form-control'
-            .col-md-6
-              %dt= f.label :teacher_name
-              %dd= f.text_field :teacher_name, class: 'form-control'
-        .form-group.col-md-12
+        %dl
+          .col-md-6
+            %dt= f.label :course_name
+            %dd= f.text_field :name, class: 'form-control'
+          .col-md-6
+            %dt= f.label :teacher_name
+            %dd= f.text_field :teacher_name, class: 'form-control'
           %dl
             .col-md-4
               %dt= f.label :start_time
@@ -36,9 +34,12 @@
               %dd= f.time_field :end_time, ampm: true, class: 'form-control'
 
             .col-md-4
-              %dt= f.label :days_of_the_week
+              %dt= f.label "Days of the week *"
               %dd= f.select :days_of_the_week, options_for_select(Date::DAYNAMES), {}, multiple: true, class: 'form-control'
       %fieldset.actions
         = f.submit 'Add Course', class: 'btn btn-success', id: 'submit_course'
   - else
     = render 'example'
+
+%br
+%footer * "Ctrl" click to select mutliple days

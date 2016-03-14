@@ -9,6 +9,7 @@
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
+    %script{:src => "assets/libs/bootstrap/dist/js/bootstrap.js"}
 
   %body
     .navbar.navbar-default.navbar-static-top
@@ -17,9 +18,12 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a.navbar-brand(href="/") HomeworkPlanner
+        - if current_user.present?
+          %a.navbar-brand(href="/assignments") HomeworkPlanner
+        - else
+          %a.navbar-brand(href="/") HomeworkPlanner
         .navbar-collapse.collapse.navbar-responsive-collapse
-          %ul.nav.navbar-nav
+          %ul.nav.navbar-nav{date: {toggle: 'collapse'}}
             %li= link_to "Courses", courses_path
             %li= link_to "Assignments", assignments_path
             - if user_signed_in?
