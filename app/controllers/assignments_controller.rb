@@ -1,7 +1,7 @@
 class AssignmentsController < ApplicationController
   expose :assignment
   expose :assignments do
-    current_user.assignments
+    current_user.assignments.active
   end
   expose :courses do
     current_user.courses
@@ -26,11 +26,12 @@ class AssignmentsController < ApplicationController
 
   def destroy
     assignment = Assignment.find(params[:id])
-    assignment.destroy
+    assignment.update(deleted_at: DateTime.now)
     head :no_content
   end
 
   private
+
   def assignment_params
     params.require(:assignment).permit(
       :name,

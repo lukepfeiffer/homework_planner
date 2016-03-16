@@ -30,6 +30,14 @@
               %li= link_to "Signout", sign_out_path, method: :delete
             - else
               %li= link_to "Sign Up", root_path
+          - if current_user.present?
+            .col-sm-3.col-md-3.pull-right
+              %form.navbar-form{:role => "search"}
+                .input-group
+                  %input#srch-term.form-control{name: "srch-term", type: "text", placeholder: 'Assignments'}
+                    .input-group-btn
+                      %button.btn.btn-default{:type => "submit"}
+                        %i.glyphicon Search
 
     .container
       .row
