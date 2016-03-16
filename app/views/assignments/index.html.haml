@@ -1,3 +1,7 @@
+%nav.right
+  = link_to 'Archived', assignments_path(scope: :archived)
+  = link_to 'Active', assignments_path
+  = link_to 'All', assignments_path(scope: :all)
 %h1.page-header Assignments
 %section#assignments
   - if user_signed_in?

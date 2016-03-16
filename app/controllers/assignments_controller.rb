@@ -1,7 +1,8 @@
 class AssignmentsController < ApplicationController
+
   expose :assignment
   expose :assignments do
-    current_user.assignments.active
+    current_user.assignments.by_scope(params[:scope])
   end
   expose :courses do
     current_user.courses

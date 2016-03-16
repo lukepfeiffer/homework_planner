@@ -22,5 +22,9 @@
           |
           %span.bold_text
             #{assignment.time_approximation} (Hours)
+        .text
+          Deleted at:
+          = assignment.deleted_at
+
         %button.btn.btn-warning.btn-xs.edit_assignment Edit
         %button.btn.btn-danger.btn-xs.delete_button{data: {url: assignment_path(assignment)}} Delete
