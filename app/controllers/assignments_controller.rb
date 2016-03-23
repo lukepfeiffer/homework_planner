@@ -2,7 +2,13 @@ class AssignmentsController < ApplicationController
 
   expose :assignment
   expose :assignments do
-    current_user.assignments.by_scope(params[:scope])
+    if params[:scope].present?
+      current_user.assignments.by_scope(params[:scope])
+    elsif params[:search].present?
+      Assignment.fuzzy_search(name: params[:search])
+    else
+      current_user.assignments.by_scope(params[:scope])
+    end
   end
   expose :courses do
     current_user.courses

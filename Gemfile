@@ -17,6 +17,7 @@ gem 'filepicker-rails'
 gem 'twitter-bootstrap-rails'
 gem 'formal'
 gem 'selenium-webdriver'
+gem 'textacular', '~> 3.0'
 
 group :development, :test do
   gem 'pry-rails'
