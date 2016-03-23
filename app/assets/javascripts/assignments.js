@@ -6,7 +6,6 @@ $(document).ready(function(){
       url: form.attr("action"),
       data: form.serialize(),
       success: function(response){
-        debugger
         $('.assignment_container').append(response)
       }
     })
