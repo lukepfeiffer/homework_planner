@@ -7,7 +7,7 @@
       .text= course.teacher_name
       .field= f.text_field :teacher_name, class: 'form-control'
     %td.col-md-2
-      = link_to course.assignments.count, assignments_path
+      = link_to course.assignments.count, assignments_path(course: course.name)
     %td.col-md-4
       .time
         .text
