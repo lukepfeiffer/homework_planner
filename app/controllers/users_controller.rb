@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  expose :user
 
   def create
     user = User.new(user_params)

@@ -18,8 +18,10 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        - if current_user.present?
+        - if current_user.present? && current_user.courses.present?
           %a.navbar-brand(href="/assignments") HomeworkPlanner
+        - elsif current_user.present? && current_user.courses.blank?
+          %a.navbar-brand(href="/courses") HomeworkPlanner
         - else
           %a.navbar-brand(href="/") HomeworkPlanner
         .navbar-collapse.collapse.navbar-responsive-collapse
