@@ -8,9 +8,8 @@
           .field= f.text_field :name, class: 'form-control', id: 'edit_assignment_name'
           .field= f.select :course_id, options_for_select(courses.collect { |course| [course.name.titleize, course.id] }, 1), {}, class: 'form-control'
           .field= f.text_area :description, class: 'form-control'
-          .field
-            = f.date_field :due_date, class: 'form-control inline'
-            = f.number_field :time_approximation, class: 'form-control inline', step: '0.25'
+          .field= f.date_field :due_date, class: 'form-control'
+          .field= f.number_field :time_approximation, class: 'form-control', step: '0.25'
         %button.btn.btn-warning.btn-xs.save_button Save
         %button.btn.btn-danger.btn-xs.cancel_button Cancel
       .content
@@ -22,9 +21,13 @@
           |
           %span.bold_text
             #{assignment.time_approximation} (Hours)
-        .text
-          Deleted at:
-          = assignment.deleted_at
+        - if assignment.deleted_at.present?
+          .text
+            Deleted on:
+            = assignment.deleted_at.strftime('%b %-d, %Y')
 
         %button.btn.btn-warning.btn-xs.edit_assignment Edit
-        %button.btn.btn-danger.btn-xs.delete_button{data: {url: assignment_path(assignment)}} Delete
+        - if assignment.deleted_at.present?
+          %button.btn.btn-danger.btn-xs.unarchive_button{data: {url: unarchive_path(assignment_id: assignment.id)}} Unarchive
+        - else
+          %button.btn.btn-danger.btn-xs.delete_button{data: {url: assignment_path(assignment)}} Archive

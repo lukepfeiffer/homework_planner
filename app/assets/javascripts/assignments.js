@@ -16,11 +16,11 @@ $(document).ready(function(){
     $('dd[data-id=' + assignmentId + ']').toggle();
   });
 
-  $('#assignments').on('click', '.delete_button', function(){
-    var deleteButton = $(this)
+  $('#assignments').on('click', '.unarchive_button, .delete_button', function(){
+    var button = $(this)
     var assignmentId = $(this).closest('dd').data('id')
     $.ajax({type: "delete",
-      url: deleteButton.data('url'),
+      url: button.data('url'),
       success: function(){
         $('[data-id=' + assignmentId + ']').remove();
       }

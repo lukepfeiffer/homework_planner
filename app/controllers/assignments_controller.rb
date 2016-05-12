@@ -5,10 +5,10 @@ class AssignmentsController < ApplicationController
     if params[:scope].present?
       current_user.assignments.by_scope(params[:scope])
     elsif params[:search].present?
-      Assignment.fuzzy_search(name: params[:search])
+      current_user.assignments.fuzzy_search(name: params[:search])
     elsif params[:course].present?
       course = Course.find_by(name: params[:course])
-      Assignment.where(course_id: course.id)
+      current_user.assignments.where(course_id: course.id)
     else
       current_user.assignments.by_scope(params[:scope])
     end
@@ -37,6 +37,12 @@ class AssignmentsController < ApplicationController
   def destroy
     assignment = Assignment.find(params[:id])
     assignment.update(deleted_at: DateTime.now)
+    head :no_content
+  end
+
+  def unarchive
+    assignment = Assignment.find(params[:assignment_id])
+    assignment.update(deleted_at: nil)
     head :no_content
   end
 
