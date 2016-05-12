@@ -1,0 +1,18 @@
+.header
+  %h1 Sign Up
+.row
+  .col-md-6
+    = form_for user, html: {class: 'edit_user'} do |f|
+      %fieldset
+        %dl
+          %dt= f.label :email
+          %dd= f.text_field :email, class: 'form-control'
+
+          %dt= f.label :enable_text_alerts?
+          %dd= f.check_box :text_alerts
+
+          .hidden_field
+            %dt= f.label :phone_number
+            %dd= f.text_field :phone_number, class: 'form-control'
+      %fieldset.actions
+        = f.submit 'Sign Up', class: 'btn btn-primary'
