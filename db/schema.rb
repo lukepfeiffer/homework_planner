@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512120349) do
+ActiveRecord::Schema.define(version: 20160704171043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160512120349) do
     t.datetime "updated_at"
     t.boolean  "text_alerts"
     t.string   "phone_number"
+    t.string   "filepicker_url"
   end
 
 end

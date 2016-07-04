@@ -23,7 +23,8 @@ class UsersController < ApplicationController
       :email,
       :password,
       :text_alerts,
-      :phone_number
+      :phone_number,
+      :filepicker_url
     )
   end
 end
