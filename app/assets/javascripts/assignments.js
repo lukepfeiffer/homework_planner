@@ -7,6 +7,7 @@ $(document).ready(function(){
       data: form.serialize(),
       success: function(response){
         $('.assignment_container').append(response)
+        $('#no_assignments').hide();
       }
     })
   });

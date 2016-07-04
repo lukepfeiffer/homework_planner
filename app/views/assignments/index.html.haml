@@ -8,7 +8,7 @@
     .assignment_container= render partial: 'assignment_container', collection: assignments, as: :assignment
     - if assignments.empty?
       %h1.page-header
-        %small Looks like you have no assignments!
+        %small#no_assignments Looks like you have no assignments!
     = form_for assignment, html: {id: 'new'}  do |f|
       %h1
         %small.page-header Add Assignment
