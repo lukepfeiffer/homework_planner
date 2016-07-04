@@ -92,7 +92,7 @@ GEM
     fabrication (2.13.2)
     ffaker (2.0.0)
     ffi (1.9.10)
-    filepicker-rails (1.5.1)
+    filepicker-rails (2.1.0)
       rails (>= 3.2)
     formal (1.0.1)
     gherkin (2.12.2)
@@ -275,3 +275,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
   zurb-foundation
+
+BUNDLED WITH
+   1.12.5
