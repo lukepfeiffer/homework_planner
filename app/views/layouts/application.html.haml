@@ -27,6 +27,13 @@
           %a.navbar-brand(href="/") HomeworkPlanner
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav{date: {toggle: 'collapse'}}
+            -# - if current_user.present?
+            -#   %li.signed_in_user
+            -#     - if current_user.filepicker_url.present?
+            -#       = (link_to (filepicker_image_tag current_user.filepicker_url), edit_user_path(current_user))
+            -#     - else
+            -#       = image_tag 'default_avatar.png'
+            -#     = current_user.email
             %li= link_to "Courses", courses_path
             %li= link_to "Assignments", assignments_path
             - if user_signed_in?
@@ -45,12 +52,5 @@
     .container
       .row
         .col-lg-12
-          - if current_user.present?
-            %span.signed_in_user
-              - if current_user.filepicker_url.present?
-                = (link_to (filepicker_image_tag current_user.filepicker_url), edit_user_path(current_user))
-              - else
-                = image_tag 'default_avatar.png'
-              = current_user.email
           = bootstrap_flash
           = yield

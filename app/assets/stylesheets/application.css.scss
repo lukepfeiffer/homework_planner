@@ -20,15 +20,15 @@ nav.right{
   float: right;
 }
 
-.container {
-  .signed_in_user{
-    width: 50%;
-    img{
-      height: 40px;
-      width: 40px;
-      border-radius: 20px;
-    }
+.signed_in_user{
+  // width: 50%;
+  img{
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
   }
+}
+.container {
 }
 
 body{
@@ -38,10 +38,6 @@ body{
 
 .time{
   display: inline-block;
-}
-
-.bold_text{
-  font-weight: bold;
 }
 
 #new{
@@ -60,11 +56,27 @@ body{
 }
 
 .assignment_container{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  justify-content: flex-start;
   dl{
-    border-bottom: 1px solid #f2f2f2;
-    width: 50%;
+    width: 400px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-right: 20px;
+    cursor: pointer;
     dt{
-      cursor: pointer;
+      text-align: center;
+      width: 100%;
       display: block;
       clear: both;
     }
@@ -72,6 +84,13 @@ body{
       display: none;
       margin: 15px;
       clear: both;
+      button{
+        float: right;
+        margin-right: 5px;
+      }
+      .details{
+        padding: 5px 0;
+      }
       .field{
         margin: 10px 0;
         .inline{
@@ -86,20 +105,35 @@ body{
 }
 
 #assignments{
+  form{
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 2px 2px 5px #ccc;
+  }
   fieldset{
     dl{
       input{
-        width: 50%;
+        width: 100%;
       }
       textarea{
-        width: 50%;
+        width: 100%;
       }
       .small_input{
         input{
-          width: 30%;
+          width: 370px;
         }
         select{
-          width: 30%;
+          width: 370px;
+        }
+      }
+      @media only screen and (max-device-width: 768px) {
+        .small_input{
+          input{
+            width: 100%;
+          }
+          select{
+            width: 100%;
+          }
         }
       }
     }

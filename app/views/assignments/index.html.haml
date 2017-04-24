@@ -20,14 +20,18 @@
           %dt= f.label :description
           %dd= f.text_area :description, class: 'form-control'
           %section.small_input
-            %dt= f.label :course
-            %dd= f.select :course_id, options_for_select(courses.collect { |course| [course.name.titleize, course.id] }, 1), {}, class: 'form-control'
+            .form-inline
+              .form-group
+                %dt= f.label :course
+                %dd= f.select :course_id, options_for_select(courses.collect { |course| [course.name.titleize, course.id] }, 1), {}, class: 'form-control'
 
-            %dt= f.label :due_date
-            %dd= f.date_field :due_date, class: 'form-control'
+              .form-group
+                %dt= f.label :due_date
+                %dd= f.date_field :due_date, class: 'form-control'
 
-            %dt= f.label 'Time Estimate (hours)'
-            %dd= f.number_field :time_approximation, class: 'form-control', step: '0.25'
+              .form-group
+                %dt= f.label 'Time Estimate (hours)'
+                %dd= f.number_field :time_approximation, class: 'form-control', step: '0.25'
 
       %fieldset.actions
         = f.submit 'Add Assignment', class: 'btn btn-success', id: 'submit_course'

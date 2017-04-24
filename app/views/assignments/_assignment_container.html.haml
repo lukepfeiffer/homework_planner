@@ -1,8 +1,7 @@
 %dl
   %dt{data: {id: assignment.id }}= assignment.name
-
-  %dd{data: {id: assignment.id }}
-    .col-md-6
+  .col-md-12
+    %dd{data: {id: assignment.id }}
       = form_for assignment, html: {class: 'edit_form'} do |f|
         .form-group
           .field= f.text_field :name, class: 'form-control', id: 'edit_assignment_name'
@@ -13,14 +12,10 @@
         %button.btn.btn-warning.btn-xs.save_button Save
         %button.btn.btn-danger.btn-xs.cancel_button Cancel
       .content
-        .text.bold_text= assignment.course.name
-        .text= assignment.description
-        .text
-          %span.bold_text
-            = assignment.due_date.strftime('%b %-d, %Y')
-          |
-          %span.bold_text
-            #{assignment.time_approximation} (Hours)
+        .text.details= assignment.course.name
+        .text.details= assignment.description
+        .text.details= "Estimate: " + "#{assignment.time_approximation} (Hours)"
+        .text.details= "Due Date: " + assignment.due_date.strftime('%b %-d, %Y')
         - if assignment.deleted_at.present?
           .text
             Deleted on:
